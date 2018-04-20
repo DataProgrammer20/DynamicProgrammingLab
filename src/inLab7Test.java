@@ -21,7 +21,7 @@ class inLab7Test {
     @Test
     void minValue() {
         int[] array = {1, 5, 10, 25};
-        int[][] intArray = {1};
+        int[][] intArray = null; // = {1};
         Arrays.sort(intArray);
         assertArrayEquals(intArray, inLab7.calculateReturn(array, 1));
     }
@@ -30,7 +30,7 @@ class inLab7Test {
     @Test
     void expectedResult() {
         int array[] = {1, 5, 10, 25};
-        int[][] intArray = {25, 25, 10, 25, 10};
+        int[][] intArray = null; //= //{25, 25, 10, 25, 10};
         Arrays.sort(intArray);
         assertArrayEquals(intArray, inLab7.calculateReturn(array, 95));
     }
