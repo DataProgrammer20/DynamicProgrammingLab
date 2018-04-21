@@ -6,29 +6,7 @@
  * the method calculateReturn that finds the least-most number of coins to return as change.
  */
 public class DynamicChangeMaking {
-    /*
-    public static void main(String[] args) {
-        int array[] = {1,5,10,25};
-        System.out.println ("\n-95-\n");
-        int[] rs = calculateReturn(array, 95);    
-        for (int r:rs){System.out.println (r);}
-        System.out.println ("\n-42-\n");
-        rs = calculateReturn(array, 42);    
-        for (int r:rs){System.out.println (r);}
-        System.out.println ("\n-103-\n");
-        rs = calculateReturn(array, 103); 
-        for (int r:rs){System.out.println (r);}
-        System.out.println ("\n-123-\n");   
-        rs = calculateReturn(array, 123);
-        for (int r:rs){System.out.println (r);}
-        System.out.println ("\n-47 (new array)-\n");
-        array = new int[] {5,10,25};
-        rs = calculateReturn(array, 96);
-        for (int r:rs){System.out.println (r);}
-
-    }
-    */
-    public static int[] calculateReturn (int[] coinTypes, int targetChange) {
+        public static int[] calculateReturn (int[] coinTypes, int targetChange) {
         if (coinTypes.length == 0) {throw new IllegalArgumentException("Array of size zero is not allowed");}
         if (targetChange < 0) {throw new IllegalArgumentException("Value cannot be negative");}
         if (targetChange == 0) {return new int[]{0};}
