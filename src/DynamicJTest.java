@@ -12,7 +12,7 @@
 */
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-class inLab7Test {
+class DynamicJTest {
     @Test
     void emptyCoinArrayError() {
         int array[] = {};
