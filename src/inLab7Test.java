@@ -9,35 +9,29 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 class inLab7Test {
     @Test
-    void exceptionError() {
+    void emptyCoinArrayError() {
         int array[] = {};
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
         {inLab7.calculateReturn(array, 9);});
         assertEquals("Array of size zero is not allowed", exception.getMessage());
     }
     @Test
-    void negativeValue() {
+    void negativeValueError() {
         int array[] = {1, 5, 10, 25};
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
         {inLab7.calculateReturn(array, -1);});
         assertEquals("Value cannot be negative", exception.getMessage());
     }
-    //Reconstruct test to suit dynamically generated solution
-    //Old test case code below (Non-dynamic)
     @Test
-    void minValue() {
+    void zeroValueResult() {
         int[] array = {1, 5, 10, 25};
-        int[][] intArray = null; // = {1};
-        Arrays.sort(intArray);
-        assertArrayEquals(intArray, inLab7.calculateReturn(array, 1));
+        int resultArray[] = {0};
+        assertArrayEquals(resultArray, inLab7.calculateReturn(array, 0));
     }
-    //Reconstruct test to suit dynamically generated solution
-    //Old test case code below (Non-dynamic)
     @Test
-    void expectedResult() {
+    void expectedValueResult() {
         int array[] = {1, 5, 10, 25};
-        int[][] intArray = null; //= //{25, 25, 10, 25, 10};
-        Arrays.sort(intArray);
-        assertArrayEquals(intArray, inLab7.calculateReturn(array, 95));
+        int resultArray[] = {25, 25, 25, 10, 10};
+        assertArrayEquals(resultArray, inLab7.calculateReturn(array, 95));
     }
 }
