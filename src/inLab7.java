@@ -11,9 +11,10 @@ public class inLab7{
         int[] finalArr = new int[arr[arr.length - 1][0]];
         int farrindex = finalArr.length-1;
         int coinNum = arr[arr.length - 1][1];
-        for (int i = arr.length - 1; i > 0;) {
-            finalArr[farrindex] = arr[i][1];
-            i = i - arr[i][1];
+        for (int i = arr.length; i>0;){
+            finalArr[farrindex]=arr[i][1];
+            farrindex--;
+            i=i-arr[i][1];
         }
         for (int c: finalArr){
             System.out.println(c);
