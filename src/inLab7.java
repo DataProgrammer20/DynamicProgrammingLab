@@ -7,11 +7,10 @@
 public class inLab7{
     
     public static void main(String[] args) {
-        int[][] arr = calculateReturn(new int[] {1,5,10,25},15);
+        int[][] arr = calculateReturn(new int[] {1,5,12,25},16);
         int[] finalArr = new int[arr[arr.length - 1][0]];
         int farrindex = finalArr.length-1;
-        int coinNum = arr[arr.length - 1][1];
-        for (int i = arr.length; i>0;){
+        for (int i = arr.length-1; i>0;){
             finalArr[farrindex]=arr[i][1];
             farrindex--;
             i=i-arr[i][1];
@@ -23,7 +22,7 @@ public class inLab7{
     
     public static int[][] calculateReturn (int[] coinTypes, int expectedChange) {
         if (coinTypes.length < 1) {throw new IllegalArgumentException("Array of size zero is not allowed");}
-        int[][] returnedCoins = new int[expectedChange][2];
+        int[][] returnedCoins = new int[expectedChange + 1][2];
         returnedCoins[0] = new int[] {0,1};
         returnedCoins[1] = new int[] {1,1};
         int newCoin = 1;
