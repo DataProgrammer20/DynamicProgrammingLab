@@ -7,15 +7,15 @@
 public class inLab7{
     
     public static void main(String[] args) {
-        int[][] arr = calculateReturn(new int[] {1,5,10,25},42);
+        int[][] arr = calculateReturn(new int[] {1,5,10,25},15);
         int[] finalArr = new int[arr[arr.length - 1][0]];
         int farrindex = finalArr.length-1;
-        int coinNum = arr[arr.length][1];
+        int coinNum = arr[arr.length - 1][1];
         for (int i = arr.length - 1; i > 0;) {
             finalArr[farrindex] = arr[i][1];
-            i = i-arr[i][1];
+            i = i - arr[i][1];
         }
-        for ( int c: farrindex){
+        for (int c: finalArr){
             System.out.println(c);
         }
     }
@@ -25,15 +25,17 @@ public class inLab7{
         int[][] returnedCoins = new int[expectedChange][2];
         returnedCoins[0] = new int[] {0,1};
         returnedCoins[1] = new int[] {1,1};
+        int newCoin = 1;
         //Dynamic Implementation
         for (int c = 1; c < returnedCoins.length; c++) {
             returnedCoins[c][0]=expectedChange;
             for(int v : coinTypes) {
-                if ((!(c-v)<0)&&returnedCoins[c-v][0]<returnedCoins) {
+                if (!((c-v) < 0) && returnedCoins[c-v][0] + 1 < returnedCoins[c][0]) {
                     returnedCoins[c][0]=returnedCoins[c-v][0]+1;
-                    returnedCoins[c][1]=v;
+                    newCoin = v;
                 }
             }
+            returnedCoins[c][1] = newCoin;
         }
         /*
 

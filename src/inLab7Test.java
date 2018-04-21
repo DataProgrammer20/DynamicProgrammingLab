@@ -1,7 +1,7 @@
 /*
-  * Author:
-  * Date:
-  * Overview:
+  * Author: William Kingsley
+  * Date: 4/20/2018
+  * Overview: JUnit tests for inLab7.java class.
   *
 */
 import static org.junit.jupiter.api.Assertions.*;
