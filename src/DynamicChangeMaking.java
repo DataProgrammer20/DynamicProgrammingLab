@@ -1,9 +1,11 @@
 /*
  * Author: Allen Simpson
- * Date: April 13
- * Overview: Lab 7
+ * Date: 4/20/2018
+ * Overview: This program utilizes dynamic programming to solve the
+ * change-making problem. The class DynamicChangeMaking.java contains
+ * the method calculateReturn that finds the least-most number of coins to return as change.
  */
-public class inLab7{
+public class DynamicChangeMaking {
     public static int[] calculateReturn (int[] coinTypes, int expectedChange) {
         if (coinTypes.length == 0) {throw new IllegalArgumentException("Array of size zero is not allowed");}
         if (expectedChange < 0) {throw new IllegalArgumentException("Value cannot be negative");}
