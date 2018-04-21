@@ -35,8 +35,8 @@ class DynamicJTest {
     }
     @Test
     void expectedValueResult() {
-        int array[] = {1, 5, 10, 25};
-        int resultArray[] = {25, 25, 25, 10, 10};
-        assertArrayEquals(resultArray, DynamicChangeMaking.calculateReturn(array, 95));
+        int array[] = {5, 10, 25};
+        int resultArray[] = {};
+        assertArrayEquals(resultArray, DynamicChangeMaking.calculateReturn(array, 96));
     }
 }
