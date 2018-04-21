@@ -6,6 +6,7 @@
  * the method calculateReturn that finds the least-most number of coins to return as change.
  */
 public class DynamicChangeMaking {
+
     public static void main(String[] args) {
         int array[] = {1,5,10,25};
         System.out.println ("\n-95-\n");
@@ -18,16 +19,13 @@ public class DynamicChangeMaking {
         rs = calculateReturn(array, 103); 
         for (int r:rs){System.out.println (r);}
         System.out.println ("\n-123-\n");   
-        rs = calculateReturn(array, 123); 
+        rs = calculateReturn(array, 123);
         for (int r:rs){System.out.println (r);}
-        /////////////////////////////////////////////Tomorrow 1:00 Sharp
-        //////////////////*BUG*//////////////////////Errors when you are missing factors of the targetChange value 
-        /*
         System.out.println ("\n-47 (new array)-\n");
-        array = new int[] {2,5,10,25};
-        rs = calculateReturn(array, 47);    
+        array = new int[] {5,10,25};
+        rs = calculateReturn(array, 96);
         for (int r:rs){System.out.println (r);}
-        */
+
     }
 
     public static int[] calculateReturn (int[] coinTypes, int targetChange) {
@@ -41,19 +39,24 @@ public class DynamicChangeMaking {
         coinNum[0] = 0;
         lastCoinUsed[0] = 0;
         // Population of the pair of Data Arrays
-        for (int changeValue = 1; changeValue < coinNum.length; changeValue++) {                            //Interate over the data arrays
-            coinNum[changeValue] = Integer.MAX_VALUE;                                                       //Setting the coinNum changeValue to an upper-limit coinValue
-            for(int coinValue : coinTypes) {                                                                //Check different coin Types
-                int changeRemaining=changeValue-coinValue;                                                  //Caculate the remaining change
-                if (changeRemaining >= 0 &&                                                                 //*VALIDATION CHECK*//Change remaining must be positive,otherwise the value is not representable by a coin of that value (EX. 12 cannot be represented by a quarter)
-                    coinNum[changeRemaining] + 1 < coinNum[changeValue]) {                                  //   *LOGIC CHECK*  //Check that the value pointed to by the remaining change is better than the current value
-                    coinNum[changeValue]=coinNum[changeRemaining]+1;                                        //Assign coinNum changeValue to valid number given adding coin 'value'
+        for (int changeValue = 1; changeValue < coinNum.length; changeValue++) {                                                //Interate over the data arrays
+            coinNum[changeValue] = Integer.MAX_VALUE;                                                                           //Setting the coinNum changeValue to an upper-limit coinValue
+            for(int coinValue : coinTypes) {                                                                                    //Check different coin Types
+                int changeRemaining=changeValue-coinValue;                                                                      //Caculate the remaining change
+                if (changeRemaining >= 0 && (                                                                                   //*VALIDATION CHECK*//Change remaining must be positive,otherwise the value is not representable by a coin of that value (EX. 12 cannot be represented by a quarter)
+                    (coinNum[changeRemaining] != Integer.MAX_VALUE && coinNum[changeValue] == Integer.MAX_VALUE) ||             // use changeRemaining coinNum if the currentValue is invalid still
+                    (coinNum[changeRemaining] != Integer.MAX_VALUE && coinNum[changeRemaining] + 1 < coinNum[changeValue])      // if both positions are valid (ie not MAX_VALUE) then make sure this is a better match than was is currently store
+                    )) {                                 
+                    coinNum[changeValue]=coinNum[changeRemaining]+1;                                                            //Assign coinNum changeValue to valid number given adding coin 'value'
                     lastCoinUsed[changeValue]  = coinValue;                                                 
                 }
             }
         }
+        //////
+        int numberOfCoins = lastCoinUsed[targetChange] == 0 ? 0 : coinNum[targetChange];                                        // take into account that the targetChange position might have had a solution, its lastCoinUsed will be zero in that case
+        ///////
         // Parsing the pair of Data Arrays and populating the final return array
-        int[] returnedCoins = new int[coinNum[targetChange]];                                                    //Get number of coins in final answer
+        int[] returnedCoins = new int[numberOfCoins];                                                                           //Get number of coins in final answer
         int i = 0;
         while(lastCoinUsed[targetChange] > 0) {
             returnedCoins[i] = lastCoinUsed[targetChange];
