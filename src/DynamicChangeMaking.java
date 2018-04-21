@@ -14,7 +14,7 @@ public class DynamicChangeMaking {
         returnedCoins[0] = new int[] {0,1};
         returnedCoins[1] = new int[] {1,1};
         int newCoin = 1;
-        //Dynamic Implementation
+        // Dynamic Implementation
         for (int c = 1; c < returnedCoins.length; c++) {
             returnedCoins[c][0]=expectedChange;
             for(int v : coinTypes) {
