@@ -25,13 +25,12 @@ public class DynamicChangeMaking {
             }
             returnedCoins[c][1] = newCoin;
         }
-        int[][] arr = returnedCoins;
-        int[] finalArr = new int[arr[arr.length - 1][0]];
+        int[] finalArr = new int[returnedCoins[returnedCoins.length - 1][0]];
         int farrindex = finalArr.length-1;
-        for (int i = arr.length-1; i>0;) {
-            finalArr[farrindex]=arr[i][1];
+        for (int i = returnedCoins.length-1; i>0;) {
+            finalArr[farrindex]=returnedCoins[i][1];
             farrindex--;
-            i = i - arr[i][1];
+            i = i - returnedCoins[i][1];
         }
         return finalArr;
     }
